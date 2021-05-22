@@ -13,11 +13,11 @@ function sparse_matrix = spblockdiag(A, blocksize, k)
     idx.col = 1:col:total_cols;  % col --||--
     
     if k>0
-        idx.col = idx.col + blocksize - 1;
+        idx.col = idx.col + col * k;
         idx.col = idx.col(1:end-k);
         idx.row = idx.row(1:end-k);
     elseif k<0
-        idx.row = idx.col + blocksize - 1;
+        idx.row = idx.row + row * abs(k);
         idx.col = idx.col(1:end-abs(k));
         idx.row = idx.row(1:end-abs(k));
     end
